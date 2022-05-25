@@ -1,8 +1,11 @@
+import ProviderCart from './context/ProviderCart';
 import Routes from './routes/Routes';
 
 function App() {
   return (
-    <Routes />
+    <ProviderCart>
+      <Routes />
+    </ProviderCart>
   );
 }
 
