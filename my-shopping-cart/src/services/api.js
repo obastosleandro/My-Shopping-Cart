@@ -9,6 +9,6 @@ export default function useApi() {
     axios.get(baseURL).then((response) => {
       setProducts(response.data);
     });
-  }, [products])
+  }, []);
   return products
 }
