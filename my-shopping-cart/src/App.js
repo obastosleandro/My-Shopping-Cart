@@ -1,10 +1,8 @@
-import ListProducts from './pages/ListProducts';
+import Routes from './routes/Routes';
 
 function App() {
   return (
-    <section>
-      <ListProducts />
-    </section>
+    <Routes />
   );
 }
 
