@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Cart() {
   const {cartProducts} = React.useContext(MyContext);
   const navigate = useNavigate();
+  const sumProducts = cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0);
   return (
     <div>
       <h1>Bem vindo ao carrinho de compras!</h1>
@@ -21,9 +22,13 @@ export default function Cart() {
       </section>
       <div>
       <h2>Valor Total:</h2>
+        {cartProducts === null
+        ? <h1>carregando...</h1>
+        : sumProducts}
+      </div>
+      <div>
         {
-          cartProducts === null ? <h1>carregando...</h1> :
-            cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0)
+          sumProducts >= 100 && <h1>Parabéns, sua compra tem frete grátis !</h1>
         }
       </div>
     </div>
