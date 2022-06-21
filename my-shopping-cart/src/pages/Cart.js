@@ -2,6 +2,7 @@ import React from 'react'
 import MyContext from '../context/MyContext';
 import { useNavigate } from "react-router-dom";
 import '../style/listProducts.css';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Cart() {
   const { cartProducts } = React.useContext(MyContext);
@@ -11,7 +12,7 @@ export default function Cart() {
     <main className="container-flex">
       <h1 className="title">My shopping cart</h1>
       <section className="container-flex">
-        {cartProducts === null ? <h1>loading...</h1> :
+        {cartProducts === null ? <LoadingSpinner /> :
           cartProducts.map(({ image, title, price, id }) =>
             <div key={id} className="item">
               <h1 className="name">{title}</h1>
@@ -27,7 +28,7 @@ export default function Cart() {
       </section>
       <div>
         <section className="container-flex">
-          {cartProducts === null ? <h1>loading...</h1> : <h2 className="infos">Total price: {sumProducts}</h2>}
+          {cartProducts === null ? <LoadingSpinner /> : <h2 className="infos">Total price: {sumProducts}</h2>}
           {sumProducts >= 100 && <h1 className="infos">free shipping released!</h1>}
         </section>
         <button
